@@ -2,13 +2,12 @@
   "name": "tailwindcss-spinner",
   "version": "0.1.0",
   "description": "Spinner utility for Tailwind CSS",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:aniftyco/tailwindcss-spinner.git",
   "author": "Josh Manders <josh@joshmanders.com>",
   "license": "MIT",
   "files": [
-    "lib/",
-    "index.js"
+    "lib/"
   ],
   "keywords": [
     "tailwindcss",
