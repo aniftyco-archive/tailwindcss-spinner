@@ -1,4 +1,4 @@
-export default ({name = 'spinner', color = 'grey-light'}) => ({addUtilities, config}) => addUtilities({
+export default ({name = 'spinner', color = 'grey-light'} = {}) => ({addUtilities, config}) => addUtilities({
   [`.${name}`]: {
     'color': 'transparent !important',
     'pointer-events': 'none',
