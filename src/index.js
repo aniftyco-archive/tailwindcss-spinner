@@ -1,6 +1,8 @@
 export default ({
   name = 'spinner',
-  color = '#dae1e7'
+  color = '#dae1e7',
+  size = '1em',
+  border = '2px',
 } = {}) => ({
   addUtilities,
   config
@@ -11,16 +13,16 @@ export default ({
     'position': 'relative',
     '&:after': {
       'animation': 'spinAround 500ms infinite linear',
-      'border': `2px solid ${color}`,
+      'border': `${border} solid ${color}`,
       'border-radius': '290486px',
       'border-right-color': 'transparent',
       'border-top-color': 'transparent',
       'content': '""',
       'display': 'block',
-      'width': '1em',
-      'height': '1em',
-      'left': 'calc(50% - (1em / 2))',
-      'top': 'calc(50% - (1em / 2))',
+      'width': size,
+      'height': size,
+      'left': `calc(50% - (${size} / 2))`,
+      'top': `calc(50% - (${size} / 2))`,
       'position': 'absolute !important',
     },
   },
