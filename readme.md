@@ -15,8 +15,7 @@ To get started using the plugin, you can require it into your Tailwind CSS confi
 
 ```js
 plugins: [
-  // Other plugins...
-
+  // Other plugins…
   require('tailwindcss-spinner')(),
 ],
 ```
@@ -27,11 +26,12 @@ If you want to customize the spinner, you can pass any combination of the follow
 
 ```js
 plugins: [
-  // Other plugins...
-
+  // Other plugins…
   require('tailwindcss-spinner')({
     name: 'spinner', // change class name
     color: 'grey-light', // color from config to make it
+    size: '1em', // size of the spinner (used for both width and height)
+    border: '2px', // border-width of the spinner (shouldn't be bigger than half the spinner's size)
   }),
 ],
 ```
