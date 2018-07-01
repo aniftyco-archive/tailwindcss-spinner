@@ -1,11 +1,17 @@
-export default ({name = 'spinner', color = 'grey-light'} = {}) => ({addUtilities, config}) => addUtilities({
+export default ({
+  name = 'spinner',
+  color = '#dae1e7'
+} = {}) => ({
+  addUtilities,
+  config
+}) => addUtilities({
   [`.${name}`]: {
     'color': 'transparent !important',
     'pointer-events': 'none',
     'position': 'relative',
     '&:after': {
       'animation': 'spinAround 500ms infinite linear',
-      'border': `2px solid ${config(`colors.${color}`)}`,
+      'border': `2px solid ${color}`,
       'border-radius': '290486px',
       'border-right-color': 'transparent',
       'border-top-color': 'transparent',
