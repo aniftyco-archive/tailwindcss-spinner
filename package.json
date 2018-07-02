@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-spinner",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Spinner utility for Tailwind CSS",
   "main": "lib/index.js",
   "repository": "git@github.com:aniftyco/tailwindcss-spinner.git",
