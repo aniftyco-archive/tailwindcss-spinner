@@ -29,7 +29,7 @@ plugins: [
   // Other plugins…
   require('tailwindcss-spinner')({
     name: 'spinner', // change class name
-    color: 'grey-light', // color from config to make it
+    color: '#dae1e7', // color you want to make the spinner
     size: '1em', // size of the spinner (used for both width and height)
     border: '2px', // border-width of the spinner (shouldn't be bigger than half the spinner's size)
   }),
