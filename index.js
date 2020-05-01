@@ -16,7 +16,7 @@ const prefixNegativeModifiers = function(base, modifier) {
 }
 
 
-module.exports = function () {
+module.exports = function (spinnerConfig = {}) {
   return function ({
     addUtilities, addComponents, addBase, addVariant,
     e, prefix, theme, variants, config,
@@ -90,8 +90,11 @@ module.exports = function () {
       speed: '500ms',
     }
 
+    const baseClassName = spinnerConfig.className || 'spinner'
+    const themeKey = spinnerConfig.themeKey || 'spinner'
+
     const pluginUtilities = {
-      spinner: buildDefaultValuesObject(defaultConfig, 'spinner'),
+      [baseClassName]: buildDefaultValuesObject(defaultConfig, themeKey),
     }
 
     Object.entries(pluginUtilities)
