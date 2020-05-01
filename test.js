@@ -9,7 +9,7 @@ expect.extend({ toMatchCss: require('jest-matcher-css') })
 
 
 // const defaultConfig = require('tailwindcss/defaultConfig')
-const generatePluginCss = (testConfig = {}, pluginOptions = {}) => {
+const generatePluginCss = (testConfig = {}, pluginOptions) => {
   const sandboxConfig = {
     theme: {
       screens: { 'sm': '640px' },
@@ -17,7 +17,7 @@ const generatePluginCss = (testConfig = {}, pluginOptions = {}) => {
     corePlugins: false,
     plugins: [ plugin(pluginOptions) ],
   }
-  const postcssPlugins =[
+  const postcssPlugins = [
     tailwindcss(_.merge(sandboxConfig, testConfig)),
   ]
 
@@ -26,6 +26,23 @@ const generatePluginCss = (testConfig = {}, pluginOptions = {}) => {
     .then(result => result.css)
 }
 
+test.skip('can not pass direct require() into tailwind plugin', () => {
+  const sandboxConfig = {
+    theme: {
+      screens: { 'sm': '640px' },
+    },
+    corePlugins: false,
+    plugins: [ require('./index.js') ],
+  }
+  const postcssPlugins = [
+    tailwindcss(sandboxConfig),
+  ]
+
+  return postcss(postcssPlugins)
+    .process('@tailwind utilities', { from: undefined })
+    .then(result => result.css)
+    .then(css => expect(css).toEqual(expect.stringContaining('.spinner')))
+})
 
 test('generates default utilities and responsive variants', () => {
   const testConfig = {}
