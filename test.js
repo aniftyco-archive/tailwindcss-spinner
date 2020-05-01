@@ -197,3 +197,121 @@ test('utilities can be customized', () => {
 
   return generatePluginCss(testConfig).then(css => expect(css).toMatchCss(expectedCss))
 })
+
+test('class name and theme key can be customized', () => {
+  const testConfig = {
+    theme: {
+      customSpinner: {
+        default: {
+          color: '#dae1e7',
+          size: '1em',
+          border: '2px',
+          speed: '500ms',
+        },
+        md: {
+          color: 'currentColor',
+          size: '2em',
+          border: '2px',
+          speed: '500ms',
+        },
+      },
+    },
+  }
+  const expectedCss = `
+    .my-spinner {
+      position: relative;
+      color: transparent !important;
+      pointer-events: none;
+    }
+
+    .my-spinner::after {
+      content: '';
+      position: absolute !important;
+      top: calc(50% - (1em / 2));
+      left: calc(50% - (1em / 2));
+      display: block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #dae1e7;
+      border-radius: 9999px;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      animation: spinAround 500ms infinite linear;
+    }
+
+    .my-spinner-md {
+      position: relative;
+      color: transparent !important;
+      pointer-events: none;
+    }
+
+    .my-spinner-md::after {
+      content: '';
+      position: absolute !important;
+      top: calc(50% - (2em / 2));
+      left: calc(50% - (2em / 2));
+      display: block;
+      width: 2em;
+      height: 2em;
+      border: 2px solid currentColor;
+      border-radius: 9999px;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      animation: spinAround 500ms infinite linear;
+    }
+
+    @keyframes spinAround {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (min-width: 640px) {
+      .sm\\:my-spinner {
+        position: relative;
+        color: transparent !important;
+        pointer-events: none;
+      }
+
+      .sm\\:my-spinner::after {
+        content: '';
+        position: absolute !important;
+        top: calc(50% - (1em / 2));
+        left: calc(50% - (1em / 2));
+        display: block;
+        width: 1em;
+        height: 1em;
+        border: 2px solid #dae1e7;
+        border-radius: 9999px;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        animation: spinAround 500ms infinite linear;
+      }
+
+      .sm\\:my-spinner-md {
+        position: relative;
+        color: transparent !important;
+        pointer-events: none;
+      }
+
+      .sm\\:my-spinner-md::after {
+        content: '';
+        position: absolute !important;
+        top: calc(50% - (2em / 2));
+        left: calc(50% - (2em / 2));
+        display: block;
+        width: 2em;
+        height: 2em;
+        border: 2px solid currentColor;
+        border-radius: 9999px;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        animation: spinAround 500ms infinite linear;
+      }
+    }
+  `
+
+  return generatePluginCss(
+    testConfig,
+    { className: 'my-spinner', themeKey: 'customSpinner' }
+  ).then(css => expect(css).toMatchCss(expectedCss))
+})
