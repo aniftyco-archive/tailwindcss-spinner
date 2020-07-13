@@ -43,10 +43,13 @@ yarn add -D tailwindcss-spinner
   },
 
   plugins: [
-    require('tailwindcss-spinner')(), // no options to configure
+    // optional configuration for resulting class name and/or tailwind theme key
+    require('tailwindcss-spinner')({ className: 'spinner', themeKey: 'spinner' }),
   ],
 }
 ```
+
+### Resulting CSS:
 
 ```css
 .spinner {
