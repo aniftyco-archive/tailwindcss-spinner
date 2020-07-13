@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const flatten = require('flat')
+const plugin = require('tailwindcss/plugin')
 
 
 const FLATTEN_CONFIG = { delimiter: '-', maxDepth: 2 }
@@ -16,7 +17,7 @@ const prefixNegativeModifiers = function(base, modifier) {
 }
 
 
-module.exports = function (spinnerConfig = {}) {
+function pluginFactory(spinnerConfig = {}) {
   return function ({
     addUtilities, addComponents, addBase, addVariant,
     e, prefix, theme, variants, config,
@@ -118,3 +119,5 @@ module.exports = function (spinnerConfig = {}) {
     })
   }
 }
+
+module.exports = plugin.withOptions(pluginFactory)
