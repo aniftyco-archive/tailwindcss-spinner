@@ -26,7 +26,7 @@ const generatePluginCss = (testConfig = {}, pluginOptions) => {
     .then(result => result.css)
 }
 
-test.skip('can not pass direct require() into tailwind plugin', () => {
+test('can pass direct require() into tailwind plugin', () => {
   const sandboxConfig = {
     theme: {
       screens: { 'sm': '640px' },
