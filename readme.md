@@ -1,6 +1,8 @@
 # Tailwind CSS Spinner
 > Spinner utility for Tailwind CSS
 
+*NOTICE:* This package is now deprecated and archived as Tailwind CSS v1.6 introduced animations with [spinners](https://tailwindcss.com/docs/animation/#spin) in the examples. Please use that instead.
+
 ## Installation
 
 Add this plugin to your project:
